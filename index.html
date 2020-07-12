@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+    <ul id="ul1">
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+    </ul>
+</body>
+<script >
+window.onload = function(){
+　　var oUl = document.getElementById("ul1");
+    console.log('20',oUl)
+　　oUl.onclick = function(ev){
+　　　　var ev = ev || window.event;
+　　　　var target = ev.target || ev.srcElement;
+        console.log('24',target,target.nodeName)
+　　　　if(target.nodeName.toLowerCase() == 'li'){
+　 　　　　　　 alert(123);
+　　　　　　　  alert(target.innerHTML);
+　　　　}
+　　}
+}
+</script>
+</html>

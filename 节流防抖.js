@@ -10,11 +10,10 @@ function debounce (handle, deley) {
     var timer = null;
     return function() {
         var _this = this;
-        var _arg = arguments;
+        var _arg = Array.from(arguments);
         console.log(_this, _arg);
         clearTimeout(timer);
         timer = setTimeout(function() {
-            console.log('this:',this,arguments)
             handle.appply(_this, _arg);
         },deley);
     }
@@ -25,7 +24,7 @@ function throttle (handle, deley) {
     return function() {
         var nowTime = new Date();
         if(nowTime -  lastTime >= deley) {
-            handle.appply(this, arguments);
+            handle.appply(this, Array.from(arguments));
             lastTime = nowTime
         }
     }
