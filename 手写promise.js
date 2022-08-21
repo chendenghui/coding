@@ -1,8 +1,5 @@
 /*
  * @Descripttion: 手写promise  https://juejin.im/post/5e5f52fce51d4526ea7efdec
- * @version: 
- * @Author: chendenghui
- * @Date: 2020-03-22 14:52:01
  * @LastEditors: chendenghui
  * @LastEditTime: 2020-03-22 14:52:28
  */
