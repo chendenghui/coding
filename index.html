@@ -15,18 +15,22 @@
     </ul>
 </body>
 <script >
-window.onload = function(){
-　　var oUl = document.getElementById("ul1");
-    console.log('20',oUl)
-　　oUl.onclick = function(ev){
-　　　　var ev = ev || window.event;
-　　　　var target = ev.target || ev.srcElement;
-        console.log('24',target,target.nodeName)
-　　　　if(target.nodeName.toLowerCase() == 'li'){
-　 　　　　　　 alert(123);
-　　　　　　　  alert(target.innerHTML);
-　　　　}
-　　}
-}
+(function(window){
+    let p1 = new Promise((resolve, reject) => {
+    	//这里是通过setTimeout仿作了一个异步背景
+        setTimeout(()=>{
+            resolve('p1');
+        },500)
+    })
+    let p2 = new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            reject('p2');
+        },1000)
+    })
+    let p = Promise.allSettled([p1, p2]).then(res=>{
+        console.log(31,res);
+    })
+})(window)
+
 </script>
 </html>

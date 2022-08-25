@@ -23,6 +23,8 @@
  * @param {number} n
  * @return {void} Do not return anything, modify nums1 in-place instead.
  */
+
+//前序双指针
 var merge = function(nums1, m, nums2, n) {
     var left1 = 0;
     var left2 = 0;
@@ -42,5 +44,20 @@ var merge = function(nums1, m, nums2, n) {
     console.log('result:',nums1,result)
     for (var i=0; i < result.length;i ++) {
         nums1[i] = result[i];
+    }
+};
+
+// 后续双指针 最优解不用新建数组，利用nums1的空余尾部空间
+
+var merge = function(nums1, m, nums2, n) {
+    let i = nums1.length - 1
+    m--
+    n--
+    while(n >= 0) {
+        if(nums1[m] > nums2[n]) {
+            nums1[i--] = nums1[m--]
+        } else {
+            nums1[i--] = nums2[n--]
+        }
     }
 };

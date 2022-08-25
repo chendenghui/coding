@@ -7,3 +7,12 @@ var climbStairs = function(n) {
   }
   return r
 }
+
+function fibonacci2(n) {
+  let current = 0;
+  let next = 1;
+  for(let i = 0; i < n; i++){
+      [current, next] = [next, current + next];
+  }
+  return current;
+}
