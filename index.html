@@ -3,12 +3,24 @@
 <meta charset="UTF-8">
 <script src="http://apps.bdimg.com/libs/jquery/1.7.2/jquery.min.js"></script>
 <style>
+    #ul1 {
+        position: relative;
+        top: 100px;
+        left: 200px;
+        background-color: red;
+    }
+    #li1 {
+        position: absolute;
+        background-color: aqua;
+        top: 200px;
+        left: 100px;
 
+    }
 </style>
 </head>
 <body>
     <ul id="ul1">
-        <li>111</li>
+        <li id="li1">111</li>
         <li>222</li>
         <li>333</li>
         <li>444</li>
@@ -31,6 +43,24 @@
         console.log(31,res);
     })
 })(window)
+
+var count = 1;
+var test = function() {
+    console.log('start')
+    setTimeout(()=>{
+        console.log(this.count, 11)
+    },10)
+    setTimeout(function() {
+        console.log(this.count, 12)
+    },0)
+    new Promise(resolve => {
+        resolve()
+    }).then(()=> {
+        console.log('promise')
+    })
+    console.log('end')
+}
+test.call({count:2})
 
 </script>
 </html>

@@ -9,6 +9,10 @@
 
 //手写instanceof
 var instance_of = function(left, right) {
+// 验证如果为基本数据类型，就直接返回 false
+  const baseType = ['string', 'number', 'boolean', 'undefined', 'symbol']
+  if(baseType.includes(typeof(left))) { return false }
+
     var R = right.prototype;
     var L = left.__proto__;
     while(true) {
