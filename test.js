@@ -1,3 +1,24 @@
+
+//1,4,7,5,2,6,3
+// console.log(1)
+// setTimeout(()=> {
+//     console.log(2)
+//     setTimeout(()=> {
+//         console.log(3)
+//     })
+// })
+// new Promise(resolve=> {
+//     console.log(4)
+//     resolve(5)
+// }).then(res=> {
+//     console.log(res)
+// })
+// setTimeout(function() {
+//   console.log(6)  
+// })
+// console.log(7)
+
+//1,5,6,3,7,8,9,2,4
 // console.log(1)
 // setTimeout(() => {
 //     console.log(2)
@@ -76,22 +97,82 @@
 // // var this = 
 // var a = new Object();
 
-function get(obj,attr,num){
-    var result = obj;
-    attr = attr.split('');
-    for(var i=0;i<attr.length;i++){
-        result = result[attr[i]];
-        if(!result){
-            return num
-        }
+// function get(obj,attr,num){
+//     var result = obj;
+//     attr = attr.split('');
+//     for(var i=0;i<attr.length;i++){
+//         result = result[attr[i]];
+//         if(!result){
+//             return num
+//         }
+//     }
+//     return result;
+// }
+// var obj = {
+//     a:{
+//         b:{
+//             c:[1,2,3]
+//         }
+//     }
+// }
+// console.log(get(obj,'a.b.c[0]',0))
+
+
+let p1 = new Promise((resolve, reject) => {
+    setTimeout(()=> {
+        resolve(1)
+    },1000)
+  })
+  
+  let p2 = new Promise((resolve, reject) => {
+    setTimeout(()=> {
+        resolve(3)
+    },2000)
+  })
+  let p3 = new Promise((resolve, reject) => {
+    setTimeout(()=> {
+        resolve(4)
+    },3000)
+  })
+  let p4 = new Promise((resolve, reject) => {
+    setTimeout(()=> {
+        resolve(2)
+    },4000)
+  })
+  
+  let p5 = new Promise((resolve, reject) => {
+    setTimeout(()=> {
+        resolve(7)
+    },5000)
+  })
+  
+  
+//   Promise.all([p1, p2,p3,p4,p5]).then((result) => {
+//     console.log(result)               //['成功了', 'success']
+//   }).catch((error) => {
+//     console.log(error)
+//   })
+  
+
+function fun (arr) {
+    return new Promise((resolve,reject)=>{
+    let time = new Date().getTime()
+    const res = new Array(arr.length)
+    let finishCount = 0
+    for(let i =0;i<arr.length;i++) {
+        arr[i].then((r)=> {
+            res[i] = new Date().getTime()-time
+            ++finishCount
+
+            if(arr.length == finishCount) {
+                resolve(res)
+            }
+
+        })
     }
-    return result;
+})
 }
-var obj = {
-    a:{
-        b:{
-            c:[1,2,3]
-        }
-    }
-}
-console.log(get(obj,'a.b.c[0]',0))
+fun([p1, p2,p3,p4,p5]).then((res)=> {
+    
+    console.log(res)
+})

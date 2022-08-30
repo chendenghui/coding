@@ -18,7 +18,7 @@ let watcher = (target, setBind, getLogger) =>{
             return Reflect.set(target, property, value)
         }
     };
-    let p = new Proxy({}, handler);
+    let p = new Proxy(target, handler);
     return p;
 }
 
