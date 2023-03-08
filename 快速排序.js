@@ -2,25 +2,44 @@
 // 2、遍历数组，小于基准的放在left，大于基准的放在right
 // 3、递归
 
-function quickSort(arr){
-    //如果数组<=1,则直接返回
-    if(arr.length<=1){return arr;}
-    var pivotIndex=Math.floor(arr.length/2);
-    //找基准，并把基准从原数组删除
-    var pivot=arr.splice(pivotIndex,1)[0];
-    //定义左右数组
-    var left=[];
-    var right=[];
+// function quickSort(arr) {
+//     if(arr.length <=1 ) return arr;
+//     const num = arr[0];
+//     let left=[],right = [];
+//     // let i要从1开始
+//     for(let i= 1;i<arr.length;i++) {
+//         if(arr[i]<=num){
+//             left.push(arr[i])
+//         }else {
+//             right.push(arr[i])
+//         }
+//     }
+//     return quickSort(left).concat([num],quickSort(right))
+// }
 
-    //比基准小的放在left，比基准大的放在right
-    for(var i=0;i<arr.length;i++){
-        if(arr[i]<=pivot){
-            left.push(arr[i]);
-        }
-        else{
-            right.push(arr[i]);
+
+// const arr1 = quickSort([76,12,4,87,726,36,108,222,3])
+// console.log(arr1)
+
+//line=readline()
+//print(line)
+let arr = [1,657,27,36,34,41,5,62]
+function quickSort(arr) {
+    console.log(28,arr)
+    if(arr.length <=1) return arr
+    let a = arr[0];
+    let left = [];
+    let right = [];
+    let res = []
+    for(let i=1;i<arr.length;i++) {
+        if(arr[i]<a) {
+            left.push(arr[i])
+        }else {
+            right.push(arr[i])
         }
     }
-    //递归
-    return quickSort(left).concat([pivot],quickSort(right));
+    
+    return  quickSort(left).concat([a],quickSort(right))
+    
 }
+console.log(quickSort(arr))

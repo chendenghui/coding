@@ -14,17 +14,15 @@
 // 洗牌算法的过程如下：
 // 1.需要随机置乱的n个元素的数组a；2.从0到n开始循环，循环变量为i
 // 3.生成随机数K，K为0到n之间的随机数；4.交换i位和K位的值
-var a = [0,1,2,3,4,5,6,7,8,9];
-function xipai(arr)
-{
+var a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+function xipai(arr) {
 	var k = 0;
 	var temp = 0;
-	for(var i=0;i<arr.length;i++)
-	{
-		k = Math.floor(Math.random()*(arr.length-i));
+	for (var i = 0; i < arr.length; i++) {
+		k = Math.floor(Math.random() * (arr.length - i));
 		temp = arr[i];
 		arr[i] = arr[k];
-        arr[k] = temp;
+		arr[k] = temp;
 	}
 }
 

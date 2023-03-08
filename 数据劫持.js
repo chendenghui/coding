@@ -6,7 +6,16 @@
  * @LastEditors: chendenghui
  * @LastEditTime: 2020-03-18 01:55:22
  */
+// 核心原理是利用Object.defineProperty()进行数据的劫持，再结合订阅发布模型实现，具体是：
+//       利用Object.defineProperty()做数据劫持，结合订阅发布模式;
+// 内部解耦为三部分，再结合指令解析器
 
+// 1. 监听器Observer: 递归的监听对象上的所有属性，当属性改变时触发对应的watcher
+// 2. 订阅者watcher: 当监听的数据值修改时，执行相应的回调函数，更新模板内容
+// 3. 订阅者watcher集合的数组Dep：链接observer和watcher，每一个observer对应一个dep,内部维护一个数组，保存与该observer相关的watcher
+// 4. 实现一个指令解析器Compile，可以扫描和解析每个节点的相关指令，并根据初始化模板数据以及初始化相应的订阅器。
+
+// Object.defineProperty改写get和set时候，get里添加的watcher，set里边调用notify，那个set的地方，实例化Dep的时候，通过触发get方法巧妙地添加了侦听器
 let watcher = (target, setBind, getLogger) =>{
     let handler = {
         get(target, property, receiver){

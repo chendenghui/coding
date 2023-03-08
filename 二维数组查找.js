@@ -28,7 +28,7 @@ var findNumberIn2DArray = function(matrix, target) {
 
 
 
-// 解法 2:观察数组规律: 按照题目要求，数组的特点是：每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序,,时间复杂度是 O(M+N)，空间复杂度是 O(1)。其中 M 和 N 分别代表行数和列数。
+// 解法 2:观察数组规律: 按照题目要求，数组的特点是：每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序,时间复杂度是 O(M+N)，空间复杂度是 O(1)。其中 M 和 N 分别代表行数和列数。
 // ac地址：https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/
 // 原文地址：https://xxoo521.com/2019-12-19-er-wei-shu-zu-cha-zhao/
 /**

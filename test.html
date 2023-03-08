@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {position: absolute;}
+    #box { margin: 50px;}
+    #input {width: 500px;height: 200px;}
+  </style>
+</head>
+<body>
+ 
+  <div id="box">
+    <h2>清除空格添加“，”</h2>
+    <textarea name="" id="input" cols="30" rows="10"></textarea>
+    <!-- <input id="input" type="t"></input> -->
+    <button id="btn1" onclick="btn()">输出</button>
+    <button id="btn2">清除</button>
+    <h3>输出内容</h3>
+    <div id="text"></div>
+  </div>
+
+</body>
+<script   >
+   var btn1 = document.getElementById('btn1')
+   var btn2 = document.getElementById('btn2')
+   btn2.addEventListener('click',clear)
+  function btn () {
+    var a = document.getElementById('input')
+    var t = document.getElementById('text')
+    var reg=new RegExp(" ","g");   
+    // var value = a.value.replace(reg,',')
+    var value = a.value.replace(/\r/ig,',').replace(/\n/ig,',');
+    t.innerHTML=`<p>${value}</p>`
+  }
+  function clear() {
+    console.log(22,btn2)
+    var a = document.getElementById('input')
+    var t = document.getElementById('text')
+    
+    a.value = ''
+    t.innerHTML=`<p></p>`
+  }
+</script>
+</html>

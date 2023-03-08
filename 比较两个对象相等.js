@@ -8,22 +8,20 @@ var deepEqual = function (x, y) {
   // 指向同一内存时
   if (x === y) {
     return true;
-  }
-  else if ((typeof x == "object" && x != null) && (typeof y == "object" && y != null)) {
+  }else if ((typeof x == "object" && x != null) && (typeof y == "object" && y != null)) {
     if (Object.keys(x).length != Object.keys(y).length)
       return false;
-    for (var prop in x) {
-      if (y.hasOwnProperty(prop)){  
-        if (! deepEqual(x[prop], y[prop]))
+    for (var prop in x) { 
+      if (y.hasOwnProperty(prop)){   //y.hasOwnProperty
+        if (!deepEqual(x[prop], y[prop]))
           return false;
-      }
-      else
+      }else
         return false;
     }
     return true;
-  }
-  else 
+  }else  {
     return false;
+  }
 }
 
 // 虽然这个简单的实现适用于我们的例子中，有很多情况下，它是不能处理。例如：

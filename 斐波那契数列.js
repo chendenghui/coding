@@ -38,8 +38,12 @@ function fibonacci1(n, current = 0, next = 1) {
 function fibonacci2(n) {
     let current = 0;
     let next = 1;
+    let sum = 0;
     for(let i = 0; i < n; i++){
-        [current, next] = [next, current + next];
+        sum = current + next
+        current = next
+        next = sum
+        // [current, next] = [next, current + next];
     }
     return current;
 }
